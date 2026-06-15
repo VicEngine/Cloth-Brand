@@ -1,17 +1,104 @@
-import { StyleSheet, Text, View,Image, } from 'react-native'
+import {
+   StyleSheet, Text, Dimensions,
+   View, Image, TouchableOpacity,
+    ScrollView, TextInput }
+     from 'react-native'
 import React from 'react'
+import FormInput from '../components/FormInput'
+import { useState } from 'react'
+import { Ionicons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 const CreateAccount = () => {
+  const { width } = Dimensions.get('window');
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [number, setNumber] = useState('')
+  const [countryCode, setCountryCode] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const navigation = useNavigation();
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <View>
-          <Image source={require('../assets/images/Group03.png')} />
-        </View>
-           <View position='absolute'style={{top:122, left:30}}>
-          <Text style={{fontSize: 50, fontWeight: 'bold',fontFamily:"Raleway"}}>Create {'\n'} Account</Text>
+        <ScrollView>
+          <View>
+            <Image source={require('../assets/images/Group03.png')} style={{ color: "#F2F5FE", }} />
           </View>
-          <Image source={require('../assets/images/Group01.png')}/>
+          <View position='absolute' style={{ top: 122, left: 30 }}>
+            <Text style={{ fontSize: 50, fontWeight: 'bold', fontFamily: "Raleway" }}>Create {'\n'} Account</Text>
+          </View>
+
+          <View style={styles.cure}>
+            <Image source={require('../assets/images/Group01.png')} />
+          </View>
+
+          <View style={{ flex: 1, }}>
+            <TouchableOpacity style={styles.camera}>
+              <Image source={require('../assets/images/Group02.png')} />
+            </TouchableOpacity>
+
+            <View style={{ gap: 20 }}>
+              <View style={styles.FormInput}>
+                <FormInput
+                  title="email"
+                  placeholder="Email"
+                  placeholderTextColor="#F8F8F8"
+                  value={email}
+                  onChangeText={setEmail}
+                  keyboardType='email-address'
+                />
+              </View>
+
+              <View style={styles.password}>
+                
+                <TextInput
+                  placeholder='Password'
+                  placeholderTextColor="#F8F8F8"
+                  secureTextEntry={!showPassword}
+                  value={password}
+                  onChangeText={setPassword}
+                  style={{ fontSize: 13.8, fontFamily: "poppins", paddingHorizontal: 20, }}
+                  />
+                <TouchableOpacity onPress={()=>setShowPassword(!showPassword)} style={{marginRight:20}} >
+                  <Ionicons name={showPassword ? 'eye' : 'eye-off'} size={22} color="#888" />
+                </TouchableOpacity>
+              
+              </View>
+
+              <View style={styles.number}>
+                <View style={{ flexDirection: "row", gap: 10, paddingHorizontal: 20, alignItems: "center" }}>
+                  <TouchableOpacity>
+                    <Image source={require('../assets/images/FLAG.png')} />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity>
+                    <Image source={require('../assets/images/arrow-down (1).png')} />
+                  </TouchableOpacity>
+                  <View style={{ borderWidth: 0.5, borderColor: "#232323", height: 20 }} />
+                  <TextInput
+                    placeholder='Your number'
+                    placeholderTextColor="#F8F8F8"
+                    keyboardType='numeric'
+                    value={number}
+                    onChangeText={setNumber}
+                    style={{ fontSize: 13.8, fontFamily: "poppins", flex: 1, }}
+                  />
+                </View>
+              </View>
+            </View>
+
+          </View>
+          <TouchableOpacity style={styles.Button}>
+            <Text style={{ color: "#F3F3F3", fontSize: 22, fontWeight: "light", fontFamily: "Nunito Sans" }}>
+              Done
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={()=>navigation.goBack()} style={{alignItems:"center",marginTop:30}}>
+            <Text style={{fontSize:15,fontFamily:"Nunito Sans",fontWeight:"light"}}>Cancel</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
   )
@@ -20,8 +107,47 @@ const CreateAccount = () => {
 export default CreateAccount
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor: '#F2F2F2',
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#F2F2F2',
+  },
+
+  cure: {
+    position: "absolute",
+    top: 50,
+    right: 0,
+  },
+  camera: {
+    paddingLeft: 35,
+    marginTop: 67,
+  },
+  password: {
+    width: 335,
+    height: 52.37,
+    backgroundColor: "#D2D2D2",
+    alignSelf: "center",
+    justifyContent: "space-between",
+    borderRadius: 25,
+  alignItems:"center",
+  flexDirection:"row"
+    
+  },
+  number: {
+    width: 335,
+    height: 52.37,
+    backgroundColor: "#D2D2D2",
+    alignSelf: "center",
+    justifyContent: "center",
+    borderRadius: 25,
+  },
+  Button: {
+    width: 335,
+    height: 61,
+    backgroundColor: "#004CFF",
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    marginTop: 55,
+  }
 })

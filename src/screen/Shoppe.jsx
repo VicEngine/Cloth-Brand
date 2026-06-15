@@ -33,6 +33,7 @@ const navigation = useNavigation();
                         I already have an account
                     </Text>
                     <TouchableOpacity 
+                    onPress={() => navigation.navigate('Login')}
                         style={{
                             height: 30, width: 30, borderRadius: 30,
                             backgroundColor: "#004CFF", alignItems: "center", justifyContent: "center",
