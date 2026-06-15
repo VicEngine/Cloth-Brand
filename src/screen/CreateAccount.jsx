@@ -1,14 +1,17 @@
 import {
-   StyleSheet, Text, Dimensions,
-   View, Image, TouchableOpacity,
-    ScrollView, TextInput }
-     from 'react-native'
+  StyleSheet, Text, Dimensions,
+  View, Image, TouchableOpacity,
+  ScrollView, TextInput
+}
+  from 'react-native'
 import React from 'react'
+
 import FormInput from '../components/FormInput'
 import { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import Button from '../components/Button'
 const CreateAccount = () => {
   const { width } = Dimensions.get('window');
   const [email, setEmail] = useState('')
@@ -51,7 +54,7 @@ const CreateAccount = () => {
               </View>
 
               <View style={styles.password}>
-                
+
                 <TextInput
                   placeholder='Password'
                   placeholderTextColor="#F8F8F8"
@@ -59,11 +62,11 @@ const CreateAccount = () => {
                   value={password}
                   onChangeText={setPassword}
                   style={{ fontSize: 13.8, fontFamily: "poppins", paddingHorizontal: 20, }}
-                  />
-                <TouchableOpacity onPress={()=>setShowPassword(!showPassword)} style={{marginRight:20}} >
+                />
+                <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={{ marginRight: 20 }} >
                   <Ionicons name={showPassword ? 'eye' : 'eye-off'} size={22} color="#888" />
                 </TouchableOpacity>
-              
+
               </View>
 
               <View style={styles.number}>
@@ -75,7 +78,9 @@ const CreateAccount = () => {
                   <TouchableOpacity>
                     <Image source={require('../assets/images/arrow-down (1).png')} />
                   </TouchableOpacity>
+
                   <View style={{ borderWidth: 0.5, borderColor: "#232323", height: 20 }} />
+
                   <TextInput
                     placeholder='Your number'
                     placeholderTextColor="#F8F8F8"
@@ -89,15 +94,15 @@ const CreateAccount = () => {
             </View>
 
           </View>
-          <TouchableOpacity style={styles.Button}>
-            <Text style={{ color: "#F3F3F3", fontSize: 22, fontWeight: "light", fontFamily: "Nunito Sans" }}>
-              Done
-            </Text>
+
+          {/*Done*/}
+          <Button text='Done' />
+
+          {/*Cancel*/}
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{ alignItems: "center", marginTop: 30 }}>
+            <Text style={{ fontSize: 15, fontFamily: "Nunito Sans", fontWeight: "light" }}>Cancel</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigation.goBack()} style={{alignItems:"center",marginTop:30}}>
-            <Text style={{fontSize:15,fontFamily:"Nunito Sans",fontWeight:"light"}}>Cancel</Text>
-          </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
@@ -128,9 +133,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-between",
     borderRadius: 25,
-  alignItems:"center",
-  flexDirection:"row"
-    
+    alignItems: "center",
+    flexDirection: "row"
+
   },
   number: {
     width: 335,
@@ -140,14 +145,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 25,
   },
-  Button: {
-    width: 335,
-    height: 61,
-    backgroundColor: "#004CFF",
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "center",
-    marginTop: 55,
-  }
+ 
 })

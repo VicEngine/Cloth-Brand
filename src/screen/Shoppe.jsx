@@ -1,10 +1,11 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { useNavigation } from "@react-navigation/native";
+import Button from '../components/Button';
 
 
 export default function Shoppe() {
-const navigation = useNavigation();
+    const navigation = useNavigation();
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
@@ -20,11 +21,7 @@ const navigation = useNavigation();
                 <Text style={{ textAlign: "center", fontSize: 19, fontWeight: "light", color: "#202020", marginTop: 21 }}>
                     Beautiful eCommerce UI Kit {'\n'} for your online store
                 </Text>
-
-                <TouchableOpacity onPress={() => navigation.navigate('CreateAccount')}
-                    style={{ height: 61, width: 335, backgroundColor: "#004CFF", alignItems: "center", justifyContent: "center", borderRadius: 20, marginTop: 61 }}>
-                    <Text style={{ fontSize: 22, fontWeight: "light", color: "202020" }}>Let's get started</Text>
-                </TouchableOpacity>
+                <Button text={"Let's get started"} onPresss={() => navigation.navigate('CreateAccount')} />
                 <View style={{
                     flexDirection: "row",
                     alignItems: "center", justifyContent: "center", marginTop: 21, gap: 10
@@ -32,12 +29,12 @@ const navigation = useNavigation();
                     <Text>
                         I already have an account
                     </Text>
-                    <TouchableOpacity 
-                    onPress={() => navigation.navigate('Login')}
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Login')}
                         style={{
                             height: 30, width: 30, borderRadius: 30,
                             backgroundColor: "#004CFF", alignItems: "center", justifyContent: "center",
-                    }}>
+                        }}>
                         <Image source={require('../assets/images/Arrow.png')} />
                     </TouchableOpacity>
                 </View>

@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         height:52.37,
         paddingHorizontal:20,
         borderRadius:25,
-        marginTop:20,
+        marginTop:25,
         alignSelf:"center",
     }
 })
