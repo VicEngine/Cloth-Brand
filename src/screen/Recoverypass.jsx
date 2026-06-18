@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     bob: {
         position: "absolute",
         top: 0.7,
-        right: 0
+        right: 0,
 
     },
 })

@@ -4,7 +4,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import FormInput from '../components/FormInput'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native'
-
+import Cut from '../components/Cut'
 const Login = () => {
     const navigation=useNavigation();
     return (
@@ -47,9 +47,8 @@ const Login = () => {
                 </View>
 
                 {/*Cancel*/}
-                        <TouchableOpacity onPress={() => navigation.goBack()} style={}>
-                          <Text style={{ }}>Cancel</Text>
-                        </TouchableOpacity>
+                       <Cut onPress={() => navigation.goBack('Shoppe')} />
+                          
 
             </SafeAreaView>
         </SafeAreaProvider>

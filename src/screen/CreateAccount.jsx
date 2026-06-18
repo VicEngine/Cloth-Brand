@@ -11,7 +11,8 @@ import { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import Button from '../components/Button'
+import Button from '../components/Button';
+import Cut from '../components/Cut';
 const CreateAccount = () => {
   const { width } = Dimensions.get('window');
   const [email, setEmail] = useState('')
@@ -99,9 +100,7 @@ const CreateAccount = () => {
           <Button text='Done' />
 
           {/*Cancel*/}
-          <TouchableOpacity onPress={() => navigation.goBack()} style={{ alignItems: "center", marginTop: 30 }}>
-            <Text style={{ fontSize: 15, fontFamily: "Nunito Sans", fontWeight: "light" }}>Cancel</Text>
-          </TouchableOpacity>
+<Cut onPress={()=>navigation.goBack()}/>
 
         </ScrollView>
       </SafeAreaView>
