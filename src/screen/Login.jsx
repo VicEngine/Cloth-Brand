@@ -38,7 +38,7 @@ const Login = () => {
                 </View>
 
                 {/*Next*/}
-                <Button text={'Next'} />
+                <Button text={'Next'} onPresss={()=>navigation.navigate('Password')} />
                 
                 {/*Buttom*/}
                 <View style={styles.downbob}>
@@ -47,8 +47,8 @@ const Login = () => {
                 </View>
 
                 {/*Cancel*/}
-                        <TouchableOpacity onPress={() => navigation.goBack()} style={{ alignItems: "center", marginTop: 30 }}>
-                          <Text style={{ fontSize: 15, fontFamily: "Nunito Sans", fontWeight: "light" }}>Cancel</Text>
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={}>
+                          <Text style={{ }}>Cancel</Text>
                         </TouchableOpacity>
 
             </SafeAreaView>
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     },
     bubble: {
         position: 'absolute',
-        left: -0.68,
-        Top: -40
+        Top: 40,
+        left: 0,
     },
     rightbob: {
         position: "absolute",
