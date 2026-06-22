@@ -23,88 +23,88 @@ const CreateAccount = () => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <View>
-            <Image source={require('../assets/images/Group03.png')} style={{ color: "#F2F5FE", }} />
-          </View>
-          <View position='absolute' style={{ top: 122, left: 30 }}>
-            <Text style={{ fontSize: 50, fontWeight: 'bold', fontFamily: "Raleway" }}>Create {'\n'} Account</Text>
-          </View>
 
-          <View style={styles.cure}>
-            <Image source={require('../assets/images/Group01.png')} />
-          </View>
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <Image source={require('../assets/images/Group03.png')} style={{ color: "#F2F5FE", }} />
+        </View>
+        <View position='absolute' style={{ top: 122, left: 30 }}>
+          <Text style={{ fontSize: 50, fontWeight: 'bold', fontFamily: "Raleway" }}>Create {'\n'} Account</Text>
+        </View>
 
-          <View style={{ flex: 1, }}>
-            <TouchableOpacity style={styles.camera}>
-              <Image source={require('../assets/images/Group02.png')} />
-            </TouchableOpacity>
+        <View style={styles.cure}>
+          <Image source={require('../assets/images/Group01.png')} />
+        </View>
 
-            <View style={{ gap: 20 }}>
-              <View style={styles.FormInput}>
-                <FormInput
-                  title="email"
-                  placeholder="Email"
-                  placeholderTextColor="#F8F8F8"
-                  value={email}
-                  onChangeText={setEmail}
-                  keyboardType='email-address'
-                />
-              </View>
+        <View style={{ flex: 1, }}>
+          <TouchableOpacity style={styles.camera}>
+            <Image source={require('../assets/images/Group02.png')} />
+          </TouchableOpacity>
 
-              <View style={styles.password}>
-
-                <TextInput
-                  placeholder='Password'
-                  placeholderTextColor="#F8F8F8"
-                  secureTextEntry={!showPassword}
-                  value={password}
-                  onChangeText={setPassword}
-                  style={{ fontSize: 13.8, fontFamily: "poppins", paddingHorizontal: 20, }}
-                />
-                <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={{ marginRight: 20 }} >
-                  <Ionicons name={showPassword ? 'eye' : 'eye-off'} size={22} color="#888" />
-                </TouchableOpacity>
-
-              </View>
-
-              <View style={styles.number}>
-                <View style={{ flexDirection: "row", gap: 10, paddingHorizontal: 20, alignItems: "center" }}>
-                  <TouchableOpacity>
-                    <Image source={require('../assets/images/FLAG.png')} />
-                  </TouchableOpacity>
-
-                  <TouchableOpacity>
-                    <Image source={require('../assets/images/arrow-down (1).png')} />
-                  </TouchableOpacity>
-
-                  <View style={{ borderWidth: 0.5, borderColor: "#232323", height: 20 }} />
-
-                  <TextInput
-                    placeholder='Your number'
-                    placeholderTextColor="#F8F8F8"
-                    keyboardType='numeric'
-                    value={number}
-                    onChangeText={setNumber}
-                    style={{ fontSize: 13.8, fontFamily: "poppins", flex: 1, }}
-                  />
-                </View>
-              </View>
+          <View style={{ gap: 20 }}>
+            <View style={styles.FormInput}>
+              <FormInput
+                title="email"
+                placeholder="Email"
+                placeholderTextColor="#F8F8F8"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType='email-address'
+              style={{flex:1}}/>
             </View>
 
+            <View style={styles.password}>
+
+              <TextInput
+                placeholder='Password'
+                placeholderTextColor="#F8F8F8"
+                secureTextEntry={!showPassword}
+                value={password}
+                onChangeText={setPassword}
+                style={{ fontSize: 13.8, fontFamily: "poppins", flex: 1 }}
+              />
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={{}} >
+                <Ionicons name={showPassword ? 'eye' : 'eye-off'} size={22} color="#888" />
+              </TouchableOpacity>
+
+            </View>
+
+            <View style={styles.number}>
+              <View style={{ flexDirection: "row", gap: 10, paddingHorizontal: 20, alignItems: "center" }}>
+                <TouchableOpacity>
+                  <Image source={require('../assets/images/FLAG.png')} />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                  <Image source={require('../assets/images/arrow-down (1).png')} />
+                </TouchableOpacity>
+
+                <View style={{ borderWidth: 0.5, borderColor: "#232323", height: 20 }} />
+
+                <TextInput
+                  placeholder='Your number'
+                  placeholderTextColor="#F8F8F8"
+                  keyboardType='numeric'
+                  value={number}
+                  onChangeText={setNumber}
+                  style={{ fontSize: 13.8, fontFamily: "poppins", flex: 1, }}
+                />
+              </View>
+            </View>
           </View>
 
-          {/*Done*/}
-          <Button text='Done' />
+        </View>
 
-          {/*Cancel*/}
-<Cut onPress={()=>navigation.goBack()}/>
+        {/*Done*/}
+        <Button text='Done' />
 
-        </ScrollView>
-      </SafeAreaView>
-    </SafeAreaProvider>
+        {/*Cancel*/}
+        <Cut onPress={() => navigation.goBack()} />
+
+      </ScrollView>
+    </View>
+
   )
 }
 
@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderRadius: 25,
     alignItems: "center",
-    flexDirection: "row"
-
+    flexDirection: "row",
+    paddingHorizontal: 20,
   },
   number: {
     width: 335,
@@ -144,5 +144,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 25,
   },
- 
+
 })

@@ -8,8 +8,8 @@ import Cut from '../components/Cut'
 const Login = () => {
     const navigation=useNavigation();
     return (
-        <SafeAreaProvider>
-            <SafeAreaView style={styles.container}>
+        
+            <View style={styles.container}>
                 <View>
                     <Image source={require('../assets/images/bubble 02.png')} />
                     <View style={styles.bubble}>
@@ -50,8 +50,8 @@ const Login = () => {
                        <Cut onPress={() => navigation.goBack('Shoppe')} />
                           
 
-            </SafeAreaView>
-        </SafeAreaProvider>
+            </View>
+        
     )
 }
 
