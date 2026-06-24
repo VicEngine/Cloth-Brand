@@ -7,6 +7,7 @@ import Recoverypass from "../screen/Recoverypass";
 import Smscode from "../screen/Smscode";
 import NewPassword from "../screen/NewPassword";
 import Card from "../screen/Card";
+import Home from "../screen/Home";
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
@@ -20,6 +21,7 @@ export default function MainNavigator() {
             <Stack.Screen name="Smscode" component={Smscode} />
             <Stack.Screen name="Card" component={Card} />
             <Stack.Screen name="NewPassword" component={NewPassword} />
+            <Stack.Screen name="Home" component={Home} />
         </Stack.Navigator>
     );
 }

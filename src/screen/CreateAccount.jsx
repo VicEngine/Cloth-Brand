@@ -97,7 +97,7 @@ const CreateAccount = () => {
         </View>
 
         {/*Done*/}
-        <Button text='Done' />
+        <Button text='Done' onPresss={()=>navigation.navigate('Home')} />
 
         {/*Cancel*/}
         <Cut onPress={() => navigation.goBack()} />
