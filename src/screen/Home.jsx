@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList,ScrollView } from 'react-native'
 import React from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
@@ -56,6 +56,23 @@ const Home = () => {
     },
   ]
 
+  const New = [
+    {
+      id:'1',
+      image:require('../assets/images/pro33.png'),
+     price:'$17,oo'
+    },
+    {
+      id:'2',
+      image:require('../assets/images/pro35.png'),
+      price:'$32,oo'
+    },
+    {
+      id:'3',
+      image:require('../assets/images/pro34.png'),
+      price:'$21,oo' 
+    },
+  ]
   const renderItem = ({ item }) => (
     <View style={{ justifyContent: "center", paddingHorizontal: 10, marginTop: 10 }}>
       <View style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: "#707070", }}>
@@ -81,9 +98,26 @@ const Home = () => {
       </TouchableOpacity>
     </View>
   )
+
+  const NewItem = ({item}) => (
+      <View>
+        <View style={styles.space}>
+          <View style={styles.pro}>
+            <Image source={item.image} />
+          </View>
+          <Text style={styles.protitle}>
+           Lorem ipsum dolor sit {'\n'} amet consectetur.
+          </Text>
+          <Text style={styles.proprice}>
+          {item.price}
+          </Text>
+          </View>
+        </View>
+  )
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
+        <ScrollView>
         <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
           <View style={{ flexDirection: "row", gap: 20, alignItems: "center" }}>
             <View style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: "#fff", alignItems: "center", justifyContent: "center" }}>
@@ -171,14 +205,14 @@ const Home = () => {
 
           />
         </View>
-        <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
           <View>
-          <Text style={styles.title}>
-            New Items
-          </Text>
-</View>
-          <View style={{flexDirection:"row",alignItems:"center",gap:20,marginTop:15}}>
-            <Text style={{fontSize:15,fontWeight:"bold"}}>
+            <Text style={styles.title}>
+              New Items
+            </Text>
+          </View>
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 20, marginTop: 15 }}>
+            <Text style={{ fontSize: 15, fontWeight: "bold" }}>
               See All
             </Text>
             <TouchableOpacity style={{ width: 25, height: 25, borderRadius: 25, backgroundColor: "#0C54FF", alignItems: "center", justifyContent: "center" }}>
@@ -186,6 +220,16 @@ const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
+<View>
+  <FlatList
+  data={New}
+  renderItem={NewItem}
+  keyExtractor={(item)=>item.id}
+  horizontal
+  />
+</View>
+      
+        </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
   )
@@ -231,5 +275,28 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 75,
     left: 50,
+  },
+  pro: {
+    width: 140,
+    height: 140,
+    backgroundColor: '#ffff',
+    alignItems: "center",
+    justifyContent: "center", 
+    borderRadius: 10,
+    marginTop:10,
+  },
+  protitle:{
+    fontSize:12,
+    fontWeight:"regular",
+    fontFamily:'Nunito Sans'
+  },
+  proprice:{
+    fontSize:17,
+    fontWeight:"bold",
+    fontFamily:'Raleway',
+    marginTop:8
+  },
+  space:{
+    paddingHorizontal:5
   },
 })
