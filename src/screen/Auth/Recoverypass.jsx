@@ -2,8 +2,8 @@ import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity } from
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useState } from 'react'
-import Button from '../components/Button'
-import Cut from '../components/Cut'
+import Button from '../../components/Button'
+import Cut from '../../components/Cut'
 const Recoverypass = () => {
     const navigation = useNavigation();
     const [isVissible, setIsVissible] = useState()
@@ -13,10 +13,10 @@ const Recoverypass = () => {
 
             <View style={{ marginLeft: 50 }}>
                 <Image
-                    source={require('../assets/images/bubble1.png')}
+                    source={require('../../assets/images/bubble1.png')}
                 />
                 <View style={styles.bob}>
-                    <Image source={require('../assets/images/bubble2.png')} />
+                    <Image source={require('../../assets/images/bubble2.png')} />
                 </View>
 
 
@@ -32,7 +32,7 @@ const Recoverypass = () => {
                 alignSelf: "center", transform: [{ translateY: -22 }]
             }}>
                 <Image
-                    source={require('../assets/images/pro.png')} style={{ width: 106, height: 106, borderRadius: 106 }}
+                    source={require('../../assets/images/pro.png')} style={{ width: 106, height: 106, borderRadius: 106 }}
                 />
             </View>
             <Text style={{ textAlign: "center", fontSize: 21, fontWeight: "bold", color: '#202020' }}>
@@ -50,7 +50,7 @@ const Recoverypass = () => {
                     </Text>
                 </View>
                 <TouchableOpacity onPress={()=> setIsVissible(!isVissible)} style={{ paddingRight: 15 }}>
-                    {isVissible?(<Image source={require('../assets/images/Check1.png')} />):(<Image source={require('../assets/images/Check2.png')}/>)}
+                    {isVissible?(<Image source={require('../../assets/images/Check1.png')} />):(<Image source={require('../../assets/images/Check2.png')}/>)}
                 </TouchableOpacity>
             </TouchableOpacity>
 
@@ -63,7 +63,7 @@ const Recoverypass = () => {
                 </View>
 
                 <TouchableOpacity onPress={() => setIsVissible(!isVissible)} style={{ paddingRight: 15 }}>
-                    {isVissible ? (<Image source={require('../assets/images/Check2.png')} />) : (<Image source={require('../assets/images/Check1.png')} />)}
+                    {isVissible ? (<Image source={require('../../assets/images/Check2.png')} />) : (<Image source={require('../../assets/images/Check1.png')} />)}
                 </TouchableOpacity>
 
             </TouchableOpacity>

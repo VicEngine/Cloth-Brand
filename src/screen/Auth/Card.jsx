@@ -163,11 +163,11 @@ const Card = () => {
   return (
     <View style={styles.container}>
       <View style={styles.Card}>
-        <Image source={require('../assets/images/bubble3.png')} />
+        <Image source={require('../../assets/images/bubble3.png')} />
       </View>
       <View style={styles.back}>
         <View style={styles.pro}>
-          <Image source={require('../assets/images/pro2.png')} style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }} />
+          <Image source={require('../../assets/images/pro2.png')} style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }} />
           <Text style={styles.first}>
             Hello
           </Text>

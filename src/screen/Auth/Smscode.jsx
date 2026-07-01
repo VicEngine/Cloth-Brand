@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image,Pressable,TextInput,FlatList, TouchableOp
 import React from 'react'
 import { useRef } from 'react'
 import { useState } from 'react';
-import Cut from '../components/Cut';
+import Cut from '../../components/Cut';
 import { useNavigation } from '@react-navigation/native';
 const Smscode = () => {
     const PIN_LENGTH =4;
@@ -13,16 +13,16 @@ const Smscode = () => {
     return (
         <View style={styles.container}>
             <View style={{ marginLeft: 50 }}>
-                <Image source={require('../assets/images/bubble1.png')}
+                <Image source={require('../../assets/images/bubble1.png')}
                 />
                 <View style={styles.bob}>
-                    <Image source={require('../assets/images/bubble2.png')} />
+                    <Image source={require('../../assets/images/bubble2.png')} />
                 </View>
             </View>
             <View style={{ width: 122, height: 122, borderRadius: 122, backgroundColor: "#fff", alignSelf: "center", transform: [{ translateY: -24 }], alignItems: "center", justifyContent: "center" }
             }>
 
-                <Image source={require('../assets/images/pro.png')} style={{ width: 106, height: 106, borderRadius: 106 }} />
+                <Image source={require('../../assets/images/pro.png')} style={{ width: 106, height: 106, borderRadius: 106 }} />
             </View>
             <Text style={{textAlign:"center",fontSize:21,fontWeight:"bold"}}>
                 Password Recovery

@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { useNavigation } from "@react-navigation/native";
-import Button from '../components/Button';
+import Button from '../../components/Button';
 
 
 export default function Shoppe() {
@@ -13,7 +13,7 @@ export default function Shoppe() {
                     height: 134, width: 134, borderRadius: 134,
                     backgroundColor: '#FFFFFF', alignItems: "center", justifyContent: 'center',
                 }}>
-                    <Image source={require('../assets/images/Group.png')} />
+                    <Image source={require('../../assets/images/Group.png')} />
                 </View>
                 <Text style={{ fontSize: 52, fontWeight: "bold", color: "#202020", marginTop: 21 }}>
                     Shoppe
@@ -35,7 +35,7 @@ export default function Shoppe() {
                             height: 30, width: 30, borderRadius: 30,
                             backgroundColor: "#004CFF", alignItems: "center", justifyContent: "center",
                         }}>
-                        <Image source={require('../assets/images/Arrow.png')} />
+                        <Image source={require('../../assets/images/Arrow.png')} />
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>

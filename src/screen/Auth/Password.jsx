@@ -17,16 +17,16 @@ const Password = () => {
     <View style={styles.conatiner}>
       <ImageBackground style={{ flex: 1, }}>
         {/*Bubble 1*/}
-        <Image source={require('../assets/images/bubble 02.png')}
+        <Image source={require('../../assets/images/bubble 02.png')}
           style={{ width: "84%", }} />
         <View style={styles.bubble}>
           {/*Bubble 2*/}
-          <Image source={require('../assets/images/bubble 01.png')} />
+          <Image source={require('../../assets/images/bubble 01.png')} />
         </View>
       </ImageBackground>
 
       <View style={styles.profile}>
-        <Image source={require('../assets/images/pro.png')}
+        <Image source={require('../../assets/images/pro.png')}
           style={{ width: 106, height: 106, borderRadius: 106 }} />
       </View>
 
