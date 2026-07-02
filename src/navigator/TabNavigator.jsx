@@ -8,9 +8,9 @@ const Tab = createBottomTabNavigator()
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="User" component={User} />
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="User" component={User} />
    <Tab.Screen name="Wishlist" component={Wishlist}/>
     </Tab.Navigator>
   )
