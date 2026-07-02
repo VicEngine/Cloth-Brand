@@ -1,24 +1,307 @@
-import { StyleSheet, Text, View, Image,TouchableOpacity,TextInput, } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ScrollView, FlatList } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 const Home = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={{ marginTop: 30,flexDirection:"row",gap:10,alignItems:"center" }}>
-        <Text style={styles.tag}>
-          Shop
-        </Text>
-        <View style={{ backgroundColor: "#F8F8F8", width: "80%", height: 50, borderRadius: 30, justifyContent: "space-between", flexDirection: "row", alignItems: "center", paddingHorizontal: 20, }}>
-          <TextInput
-          placeholder='Search'
-          placeholderTextColor={'#C7C7C7'}
-          style={{fontSize:16,fontWeight:"medium",flex:1}}
-          />
-          <TouchableOpacity>
-          <Image source={require('../assets/icons/cam.png')} />
-          </TouchableOpacity>
+  const categories = [
+    {
+      id: "1",
+      title: "Clothing",
+      count: 109,
+      images: [
+        require("../assets/images/pro29.png"),
+        require("../assets/images/pro30.png"),
+        require("../assets/images/pro31.png"),
+        require("../assets/images/pro32.png"),
+
+      ],
+    },
+    {
+      id: "2",
+      title: "Shoes",
+      count: 530,
+      images: [
+        require("../assets/images/pro25.png"),
+        require("../assets/images/pro26.png"),
+        require("../assets/images/pro27.png"),
+        require("../assets/images/pro28.png"),
+      ],
+    },
+    {
+      id: "3",
+      title: "Bags",
+      count: 87,
+      images: [
+        require("../assets/images/pro21.png"),
+        require("../assets/images/pro22.png"),
+        require("../assets/images/pro23.png"),
+        require("../assets/images/pro24.png"),
+      ],
+    },
+    {
+      id: "4",
+      title: "Lingerie",
+      count: 218,
+      images: [
+        require("../assets/images/pro17.png"),
+        require("../assets/images/pro18.png"),
+        require("../assets/images/pro19.png"),
+        require("../assets/images/pro20.png"),
+      ],
+    },
+    {
+      id: "5",
+      title: "Watch",
+      count: 218,
+      images: [
+        require("../assets/images/pro43.png"),
+        require("../assets/images/pro44.png"),
+        require("../assets/images/pro45.png"),
+        require("../assets/images/pro46.png"),
+      ],
+    },
+    {
+      id: "6",
+      title: "Hoodies",
+      count: 218,
+      images: [
+        require("../assets/images/pro39.png"),
+        require("../assets/images/pro40.png"),
+        require("../assets/images/pro41.png"),
+        require("../assets/images/pro42.png"),
+      ],
+    },
+  ];
+
+  const Product = [
+    {
+      id: '1',
+      image: require('../assets/images/pic11.png')
+    },
+    {
+      id: '2',
+      image: require('../assets/images/pic10.png')
+    },
+    {
+      id: '3',
+      image: require('../assets/images/pic9.png')
+    },
+    {
+      id: '4',
+      image: require('../assets/images/pic8.png')
+    },
+    {
+      id: '5',
+      image: require('../assets/images/pic7.png')
+    },
+  ]
+
+  const NewItem = [
+    {
+      id: '1',
+      image: require('../assets/images/pro47.png'),
+      price: '$17,00',
+    },
+    {
+      id: '2',
+      image: require('../assets/images/pro48.png'),
+      price: '$32,00',
+    },
+    {
+      id: '3',
+      price: '$21,00',
+    },
+  ]
+
+ const FlashSale = [
+    {
+      id: '1',
+      image: require('../assets/images/pro16.png'),
+
+    },
+    {
+      id: '2',
+      image: require('../assets/images/pro15.png'),
+
+    },
+    {
+      id: '3',
+      image: require('../assets/images/pro14.png'),
+
+    },
+    {
+      id: '4',
+      image: require('../assets/images/pro12.png'),
+
+    },
+    {
+      id: '5',
+      image: require('../assets/images/pro13.png'),
+
+    },
+    {
+      id: '6',
+      image: require('../assets/images/pro11.png'),
+
+    },
+
+
+  ]
+
+
+  const CategoryCard = ({ item }) => {
+    return (
+      <View style={styles.card}>
+        <View style={styles.imageGrid}>
+          {item.images.map((img, index) => (
+            <Image
+              key={index}
+              source={img}
+              style={styles.image}
+              resizeMode="cover"
+            />
+          ))}
+        </View>
+
+        <View style={styles.footer}>
+          <Text style={styles.title}>{item.title}</Text>
+
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{item.count}</Text>
+          </View>
         </View>
       </View>
+    );
+  };
+
+  const topproducts = ({ item }) => (
+    <TouchableOpacity style={styles.products} >
+      <Image source={item.image} />
+    </TouchableOpacity>
+  )
+const newItem=({item})=>(
+   <View style={{marginLeft:10}}>
+          <View style={{ width: "100%", height: 140, backgroundColor: "#FFFF", alignItems: "center", justifyContent: "center", borderRadius: 15, marginTop: 20, }}>
+            <Image source={item.image} style={{ borderRadius: 15 }} />
+          </View>
+          <Text style={{ marginTop: 6, fontSize: 16, fontWeight: "light", color: "#202020" }}>
+            Lerem ipsum dolor sit{'\n'}amet consectetur.
+          </Text>
+          <Text style={{ marginTop: 6, fontSize: 16, fontWeight: "bold" }}>
+            {item.price}
+          </Text>
+        </View>
+        )
+
+         const flashSale = ({ item }) => (
+    <View style={styles.Flashcard}>
+      <Image source={item.image} />
+      <View style={styles.discount}>
+        <Image source={require('../assets/icons/discount.png')} />
+      </View>
+    </View>
+  )
+
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+        <View style={{ marginTop: 30, flexDirection: "row", gap: 10, alignItems: "center" }}>
+          <Text style={styles.tag}>
+            Shop
+          </Text>
+          <View style={{ backgroundColor: "#F8F8F8", width: "80%", height: 50, borderRadius: 30, justifyContent: "space-between", flexDirection: "row", alignItems: "center", paddingHorizontal: 20, }}>
+            <TextInput
+              placeholder='Search'
+              placeholderTextColor={'#C7C7C7'}
+              style={{ fontSize: 16, fontWeight: "medium", flex: 1 }}
+            />
+            <TouchableOpacity>
+              <Image source={require('../assets/icons/cam.png')} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={{ width: "100%", height: 200, backgroundColor: "#F1B11C", borderRadius: 15, padding: 20, flexDirection: "row", justifyContent: "space-between", marginTop: 15 }}>
+          <View>
+            <Text style={{ fontSize: 29, fontWeight: "bold", color: "#fff" }}>
+              Big Sale
+            </Text>
+            <Text style={{ marginTop: 10, fontSize: 12, fontWeight: "bold", color: "#fff" }}>
+              up to 50%
+            </Text>
+            <Text style={{ marginTop: 75, color: "#FFFF", fontSize: 11, fontWeight: "bold" }}> Happening{'\n'}Now</Text>
+          </View>
+          <View style={styles.bob1}>
+            <Image source={require('../assets/images/bubble 1.2.png')} style={{ borderBottomLeftRadius: 15, opacity: 0.4 }} />
+          </View>
+
+          <View>
+            <Image source={require('../assets/images/pro33.png')} style={{ marginRight: 20 }} />
+          </View>
+        </View>
+
+        <View style={styles.categorySection}>
+          <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+            <View>
+              <Text style={styles.title}>
+                Categories
+              </Text>
+            </View>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 20, marginTop: 15 }}>
+              <Text style={{ fontSize: 15, fontWeight: "bold" }}>
+                See All
+              </Text>
+              <TouchableOpacity style={{ width: 25, height: 25, borderRadius: 25, backgroundColor: "#0C54FF", alignItems: "center", justifyContent: "center" }}>
+                <Image source={require('../assets/images/Arrow.png')} />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.grid}>
+            {categories.map((item) => (
+              <CategoryCard key={item.id} item={item} />
+            ))}
+          </View>
+        </View>
+
+        <Text style={{ fontSize: 20, fontWeight: "600", marginTop: 8 }}>
+          Top Products
+        </Text>
+
+        <FlatList
+          data={Product}
+          renderItem={topproducts}
+          keyExtractor={(item) => item.id}
+          horizontal
+        />
+       
+       <FlatList
+       data={NewItem}
+       renderItem={newItem}
+       keyExtractor={(item)=>item.id}
+       horizontal
+       showsHorizontalScrollIndicator={false}
+       />
+
+<View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 15 }}>
+            <Text style={styles.title}>
+              Flash Sale
+            </Text>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+              <Image source={require('../assets/icons/clock.png')} />
+              <Image source={require('../assets/icons/Timer.png')} />
+            </View>
+          </View>
+
+          <FlatList
+            data={FlashSale}
+            renderItem={flashSale}
+            keyExtractor={(item) => item.id}
+            numColumns={3}
+            scrollEnabled={false}
+            columnWrapperStyle={styles.row}
+          />
+      </ScrollView>
     </SafeAreaView>
   )
 }
@@ -31,9 +314,102 @@ const styles = StyleSheet.create({
     backgroundColor: "#F2F2F2",
     padding: 20,
   },
+  scrollContent: {
+    paddingBottom: 24,
+  },
   tag: {
     fontSize: 28,
     fontWeight: "bold",
     color: "#202020"
+  },
+  bob1: {
+    position: "absolute",
+    bottom: 0,
+    left: 0
+  },
+
+
+  card: {
+    width: "48%",
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    padding: 8,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+    marginTop: 15
+  },
+
+  imageGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
+
+  image: {
+    width: "48%",
+    height: 80,
+    borderRadius: 10,
+    marginBottom: 6,
+  },
+
+  footer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 5,
+  },
+
+  title: {
+    fontSize: 20,
+    fontWeight: "600",
+  },
+  categorySection: {
+    marginTop: 20,
+  },
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
+
+  badge: {
+    backgroundColor: "#f2f2f2",
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 10,
+  },
+
+  badgeText: {
+    fontSize: 14,
+    fontWeight: "600",
+  },
+
+  products: {
+    width: 65,
+    height: 65,
+    borderRadius: 65,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 15,
+    marginLeft: 10
+  },
+
+   row: {
+    gap: 6
+  },discount: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+  },
+   Flashcard: {
+    width: "30%",
+    height: 115,
+    backgroundColor: "#fff",
+    borderRadius: 15,
+    padding: 6,
+    marginTop: 20
   },
 })
