@@ -3,6 +3,7 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import User from '../screen/User'
 import Home from '../screen/Home'
+import Wishlist from '../screen/Wishlist'
 const Tab = createBottomTabNavigator()
 
 const TabNavigator = () => {
@@ -10,6 +11,7 @@ const TabNavigator = () => {
     <Tab.Navigator>
       <Tab.Screen name="User" component={User} />
       <Tab.Screen name="Home" component={Home} />
+   <Tab.Screen name="Wishlist" component={Wishlist}/>
     </Tab.Navigator>
   )
 }
