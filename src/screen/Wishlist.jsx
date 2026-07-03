@@ -25,28 +25,28 @@ const Wishlist = () => {
         },
     ]
 
-     const DataItem = [
-    {
-      id: '1',
-      image: require('../assets/images/pro15.png'),
-      title: 'New'
-    },
-    {
-      id: '2',
-      image: require('../assets/images/pro14.png'),
-      title: 'Sale'
-    },
-    {
-      id: '3',
-      image: require('../assets/images/pro12.png'),
-      title: 'Hot'
-    },
-    {
-      id: '4',
-      image: require('../assets/images/pro13.png'),
-      title: 'New'
-    },
-  ]
+    const DataItem = [
+        {
+            id: '1',
+            image: require('../assets/images/pro15.png'),
+            title: 'New'
+        },
+        {
+            id: '2',
+            image: require('../assets/images/pro14.png'),
+            title: 'Sale'
+        },
+        {
+            id: '3',
+            image: require('../assets/images/pro12.png'),
+            title: 'Hot'
+        },
+        {
+            id: '4',
+            image: require('../assets/images/pro13.png'),
+            title: 'New'
+        },
+    ]
 
     const data = ({ item }) => (
         <View style={{ marginRight: 10, }}>
@@ -59,27 +59,27 @@ const Wishlist = () => {
         </View>
     )
 
-     const See = ({ item }) => (
-    <View style={styles.allcontainer}>
+    const See = ({ item }) => (
+        <View style={styles.allcontainer}>
 
-      <TouchableOpacity activeOpacity={0.9} style={styles.suball}>
-        <Image source={item.image} />
-      </TouchableOpacity>
-      <View style={styles.allcontainertext}>
-        <View style={styles.allsubtext}>
-          <Text style={styles.alltext}>
-            1780
-          </Text>
-          <Image source={require('../assets/icons/heart1.png')} />
+            <TouchableOpacity activeOpacity={0.9} style={styles.suball}>
+                <Image source={item.image} />
+            </TouchableOpacity>
+            <View style={styles.allcontainertext}>
+                <View style={styles.allsubtext}>
+                    <Text style={styles.alltext}>
+                        1780
+                    </Text>
+                    <Image source={require('../assets/icons/heart1.png')} />
+                </View>
+                <View>
+                    <Text style={styles.allnewtext}>
+                        {item.title}
+                    </Text>
+                </View>
+            </View>
         </View>
-        <View>
-          <Text style={styles.allnewtext}>
-            {item.title}
-          </Text>
-        </View>
-      </View>
-    </View>
-  )
+    )
     return (
         <SafeAreaView style={styles.container}>
 
@@ -111,27 +111,28 @@ const Wishlist = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-
-            <View style={{ flexDirection: "row", gap: 20, justifyContent: "space-between", alignItems: "center", marginTop: 15 }}>
-              <Text style={{fontSize:18, fontWeight: "bold"}}>Most Popular</Text>
-              <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
-                <Text style={styles.see}>
-                    See All
-                </Text>
-                <TouchableOpacity style={{ width: 25, height: 25, borderRadius: 25, backgroundColor: "#0C54FF", alignItems: "center", justifyContent: "center" }}>
-                    <Image source={require('../assets/images/Arrow.png')} />
-                </TouchableOpacity>
+            <View style={{flex:1,justifyContent:"flex-end",marginTop:50  }}>
+                <View style={{ flexDirection: "row", gap: 20, justifyContent: "space-between", alignItems: "center",}}>
+                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>Most Popular</Text>
+                    <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+                        <Text style={styles.see}>
+                            See All
+                        </Text>
+                        <TouchableOpacity style={{ width: 25, height: 25, borderRadius: 25, backgroundColor: "#0C54FF", alignItems: "center", justifyContent: "center" }}>
+                            <Image source={require('../assets/images/Arrow.png')} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            <FlatList
-                data={DataItem}
-                renderItem={See}
-                horizontal
-                keyExtractor={(item) => item.id}
-                showsHorizontalScrollIndicator={false}
-            />
-
+                <FlatList
+                    data={DataItem}
+                    renderItem={See}
+                    horizontal
+                    keyExtractor={(item) => item.id}
+                    showsHorizontalScrollIndicator={false}
+                />
+                
+    </View>
         </SafeAreaView >
     )
 }
@@ -166,44 +167,44 @@ const styles = StyleSheet.create({
         shadowRadius: 12,
         elevation: 5,
     },
-     see: {
-    fontSize: 15,
-    fontWeight: "bold",
-  },
-  allcontainer: {
-    width: 104,
-    height: 140,
-    backgroundColor: "#FFFF",
-    marginTop: 15,
-    borderRadius: 10,
-    marginLeft: 10
-  },
-   suball: {
-    alignItems: "center",
-  },
-   allcontainertext: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginLeft: 5,
-    marginTop: 5,
-    justifyContent: "space-between"
+    see: {
+        fontSize: 15,
+        fontWeight: "bold",
+    },
+    allcontainer: {
+        width: 104,
+        height: 140,
+        backgroundColor: "#FFFF",
+        marginTop: 15,
+        borderRadius: 10,
+        marginLeft: 10
+    },
+    suball: {
+        alignItems: "center",
+    },
+    allcontainertext: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginLeft: 5,
+        marginTop: 5,
+        justifyContent: "space-between"
 
-  },
-   allsubtext: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 3
-  },
-   alltext: {
-    fontSize: 15,
-    fontWeight: "bold",
-    fontFamily: 'Raleway',
-    color: "#000000"
-  },
-   allnewtext: {
-    fontSize: 13,
-    fontWeight: 'medium',
-    marginRight: 5
-  },
+    },
+    allsubtext: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 3
+    },
+    alltext: {
+        fontSize: 15,
+        fontWeight: "bold",
+        fontFamily: 'Raleway',
+        color: "#000000"
+    },
+    allnewtext: {
+        fontSize: 13,
+        fontWeight: 'medium',
+        marginRight: 5
+    },
 
 })

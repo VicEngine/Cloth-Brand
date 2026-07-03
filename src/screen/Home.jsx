@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ScrollView, FlatList } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaView, SafeAreaProvider, } from 'react-native-safe-area-context'
+import { useNavigation } from '@react-navigation/native'
 const Home = () => {
+  const navigation = useNavigation();
   const categories = [
     {
       id: "1",
@@ -236,8 +238,8 @@ const Home = () => {
     </TouchableOpacity>
   )
   const newItem = ({ item }) => (
-    <View style={{ marginLeft: 10 }}>
-      <View style={{ width: "100%", height: 140, backgroundColor: "#FFFF", alignItems: "center", justifyContent: "center", borderRadius: 15, marginTop: 20, }}>
+    <View>
+      <View style={{ width: "90%", height: 140, backgroundColor: "#FFFF", alignItems: "center", justifyContent: "center", borderRadius: 15, marginTop: 20, }}>
         <Image source={item.image} style={{ borderRadius: 15 }} />
       </View>
       <Text style={{ marginTop: 6, fontSize: 16, fontWeight: "light", color: "#202020" }}>
@@ -250,12 +252,12 @@ const Home = () => {
   )
 
   const flashSale = ({ item }) => (
-    <View style={styles.Flashcard}>
+    <TouchableOpacity onPress={() => navigation.navigate('Flashsale')} style={styles.Flashcard}>
       <Image source={item.image} />
       <View style={styles.discount}>
         <Image source={require('../assets/icons/discount.png')} />
       </View>
-    </View>
+    </TouchableOpacity>
   )
 
   const See = ({ item }) => (
@@ -297,52 +299,131 @@ const Home = () => {
   )
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-        <View style={{ marginTop: 30, flexDirection: "row", gap: 10, alignItems: "center" }}>
-          <Text style={styles.tag}>
-            Shop
-          </Text>
-          <View style={{ backgroundColor: "#F8F8F8", width: "80%", height: 50, borderRadius: 30, justifyContent: "space-between", flexDirection: "row", alignItems: "center", paddingHorizontal: 20, }}>
-            <TextInput
-              placeholder='Search'
-              placeholderTextColor={'#C7C7C7'}
-              style={{ fontSize: 16, fontWeight: "medium", flex: 1 }}
-            />
-            <TouchableOpacity>
-              <Image source={require('../assets/icons/cam.png')} />
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={{ width: "100%", height: 200, backgroundColor: "#F1B11C", borderRadius: 15, padding: 20, flexDirection: "row", justifyContent: "space-between", marginTop: 15 }}>
-          <View>
-            <Text style={{ fontSize: 29, fontWeight: "bold", color: "#fff" }}>
-              Big Sale
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{ marginTop: 30, flexDirection: "row", gap: 10, alignItems: "center" }}>
+            <Text style={styles.tag}>
+              Shop
             </Text>
-            <Text style={{ marginTop: 10, fontSize: 12, fontWeight: "bold", color: "#fff" }}>
-              up to 50%
-            </Text>
-            <Text style={{ marginTop: 75, color: "#FFFF", fontSize: 11, fontWeight: "bold" }}> Happening{'\n'}Now</Text>
-          </View>
-          <View style={styles.bob1}>
-            <Image source={require('../assets/images/bubble 1.2.png')} style={{ borderBottomLeftRadius: 15, opacity: 0.4 }} />
+            <View style={{ backgroundColor: "#F8F8F8", width: "80%", height: 50, borderRadius: 30, justifyContent: "space-between", flexDirection: "row", alignItems: "center", paddingHorizontal: 20, }}>
+              <TextInput
+                placeholder='Search'
+                placeholderTextColor={'#C7C7C7'}
+                style={{ fontSize: 16, fontWeight: "medium", flex: 1 }}
+              />
+              <TouchableOpacity>
+                <Image source={require('../assets/icons/cam.png')} />
+              </TouchableOpacity>
+            </View>
           </View>
 
-          <View>
-            <Image source={require('../assets/images/pro33.png')} style={{ marginRight: 20 }} />
-          </View>
-        </View>
-
-        <View style={styles.categorySection}>
-          <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-            <View>
-              <Text style={styles.title}>
-                Categories
+          <TouchableOpacity style={{marginTop:20}}>
+            <Image source={require('../assets/images/bigpro1.png')} style={{ width: "100%", borderRadius: 12, height: 146, }} />
+            <View style={styles.big2}>
+              <Text style={{ fontSize: 28, fontWeight: "bold",color:"#fff" }}>
+                Big Sale
+              </Text>
+              <Text style={{ fontSize: 12, fontWeight: "bold", marginTop: 5,color:"#fff" }}>
+                Up to 50%
               </Text>
             </View>
-            <View style={{ flexDirection: "row", alignItems: "center", gap: 20, marginTop: 15 }}>
-              <Text style={{ fontSize: 15, fontWeight: "bold" }}>
+
+            <View style={styles.big}>
+              <View style={styles.big1}>
+                <Text style={{ color: "#FFF", fontWeight: "bold", fontSize: 11 }}>
+                  Happening{'\n'}Now
+                </Text>
+              </View>
+              <Image source={require('../assets/images/bubble 1.2.png')} style={{ borderBottomLeftRadius: 12 }} />
+            </View>
+            <View style={styles.big4}>
+              <Image source={require("../assets/images/bubble 1.3.png")} style={{ borderTopRightRadius: 10 }} />
+            </View>
+            <View style={styles.big3}>
+              <Image source={require('../assets/images/bubble 1.1.png')}  style={{ borderBottomRightRadius: 12 }} />
+            </View>
+
+          </TouchableOpacity>
+
+
+          <View style={styles.categorySection}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+              <View>
+                <Text style={styles.title}>
+                  Categories
+                </Text>
+              </View>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 20, marginTop: 15 }}>
+                <Text style={{ fontSize: 15, fontWeight: "bold" }}>
+                  See All
+                </Text>
+                <TouchableOpacity style={{ width: 25, height: 25, borderRadius: 25, backgroundColor: "#0C54FF", alignItems: "center", justifyContent: "center" }}>
+                  <Image source={require('../assets/images/Arrow.png')} />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={styles.grid}>
+              {categories.map((item) => (
+                <CategoryCard key={item.id} item={item} />
+              ))}
+            </View>
+          </View>
+
+          <Text style={{ fontSize: 20, fontWeight: "600", marginTop: 8 }}>
+            Top Products
+          </Text>
+
+          <FlatList
+            data={Product}
+            renderItem={topproducts}
+            keyExtractor={(item) => item.id}
+            horizontal
+          />
+          <View style={{ flexDirection: "row", gap: 20, justifyContent: "space-between", alignItems: "center", marginTop: 15 }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>New Items</Text>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+              <Text style={styles.see}>
+                See All
+              </Text>
+              <TouchableOpacity style={{ width: 25, height: 25, borderRadius: 25, backgroundColor: "#0C54FF", alignItems: "center", justifyContent: "center" }}>
+                <Image source={require('../assets/images/Arrow.png')} />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <FlatList
+            data={NewItem}
+            renderItem={newItem}
+            keyExtractor={(item) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
+
+          <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 15 }}>
+            <Text style={styles.title}>
+              Flash Sale
+            </Text>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+              <Image source={require('../assets/icons/clock.png')} />
+              <Image source={require('../assets/icons/Timer.png')} />
+            </View>
+          </View>
+
+          <FlatList
+            data={FlashSale}
+            renderItem={flashSale}
+            keyExtractor={(item) => item.id}
+            numColumns={3}
+            scrollEnabled={false}
+            columnWrapperStyle={styles.row}
+          />
+
+
+          <View style={{ flexDirection: "row", gap: 20, justifyContent: "space-between", alignItems: "center", marginTop: 15 }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>Most Popular</Text>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+              <Text style={styles.see}>
                 See All
               </Text>
               <TouchableOpacity style={{ width: 25, height: 25, borderRadius: 25, backgroundColor: "#0C54FF", alignItems: "center", justifyContent: "center" }}>
@@ -351,91 +432,35 @@ const Home = () => {
             </View>
           </View>
 
-          <View style={styles.grid}>
-            {categories.map((item) => (
-              <CategoryCard key={item.id} item={item} />
-            ))}
-          </View>
-        </View>
+          <FlatList
+            data={DataItem}
+            renderItem={See}
+            horizontal
+            keyExtractor={(item) => item.id}
+            showsHorizontalScrollIndicator={false}
+          />
 
-        <Text style={{ fontSize: 20, fontWeight: "600", marginTop: 8 }}>
-          Top Products
-        </Text>
-
-        <FlatList
-          data={Product}
-          renderItem={topproducts}
-          keyExtractor={(item) => item.id}
-          horizontal
-        />
-
-        <FlatList
-          data={NewItem}
-          renderItem={newItem}
-          keyExtractor={(item) => item.id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        />
-
-        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 15 }}>
-          <Text style={styles.title}>
-            Flash Sale
-          </Text>
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
-            <Image source={require('../assets/icons/clock.png')} />
-            <Image source={require('../assets/icons/Timer.png')} />
-          </View>
-        </View>
-
-        <FlatList
-          data={FlashSale}
-          renderItem={flashSale}
-          keyExtractor={(item) => item.id}
-          numColumns={3}
-          scrollEnabled={false}
-          columnWrapperStyle={styles.row}
-        />
-
-
-        <View style={{ flexDirection: "row", gap: 20, justifyContent: "space-between", alignItems: "center", marginTop: 15 }}>
-          <Text style={{ fontSize: 18, fontWeight: "bold" }}>Most Popular</Text>
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
-            <Text style={styles.see}>
-              See All
+          <View style={{ flexDirection: "row", gap: 10, marginTop: 15, alignItems: "center" }}>
+            <Text style={styles.title}>
+              Just For You
             </Text>
-            <TouchableOpacity style={{ width: 25, height: 25, borderRadius: 25, backgroundColor: "#0C54FF", alignItems: "center", justifyContent: "center" }}>
-              <Image source={require('../assets/images/Arrow.png')} />
-            </TouchableOpacity>
+            <Image source={require('../assets/icons/star.png')} />
           </View>
-        </View>
 
-        <FlatList
-          data={DataItem}
-          renderItem={See}
-          horizontal
-          keyExtractor={(item) => item.id}
-          showsHorizontalScrollIndicator={false}
-        />
+          <FlatList
+            data={ForYou}
+            renderItem={foryou}
+            keyExtractor={(item) => item.id}
+            scrollEnabled={false}
+            numColumns={2}
+            columnWrapperStyle={styles.rowtop}
+            contentContainerStyle={styles.listContent}
 
-        <View style={{ flexDirection: "row", gap: 10, marginTop: 15, alignItems: "center" }}>
-          <Text style={styles.title}>
-            Just For You
-          </Text>
-          <Image source={require('../assets/icons/star.png')} />
-        </View>
+          />
+        </ScrollView>
+      </SafeAreaView>
+    </SafeAreaProvider>
 
-        <FlatList
-          data={ForYou}
-          renderItem={foryou}
-          keyExtractor={(item) => item.id}
-          scrollEnabled={false}
-          numColumns={2}
-          columnWrapperStyle={styles.row}
-          contentContainerStyle={styles.listContent}
-
-        />
-      </ScrollView>
-    </SafeAreaView>
   )
 }
 
@@ -447,9 +472,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F2F2F2",
     padding: 20,
   },
-  scrollContent: {
-    paddingBottom: 24,
-  },
+
   tag: {
     fontSize: 28,
     fontWeight: "bold",
@@ -532,7 +555,8 @@ const styles = StyleSheet.create({
 
   row: {
     gap: 6
-  }, discount: {
+  },
+  discount: {
     position: "absolute",
     top: 0,
     right: 0,
@@ -586,7 +610,7 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
 
-   protitle: {
+  protitle: {
     fontSize: 12,
     fontWeight: "regular",
     fontFamily: 'Nunito Sans'
@@ -597,12 +621,49 @@ const styles = StyleSheet.create({
     fontFamily: 'Raleway',
     marginTop: 8
   },
-   just: {
+  just: {
     flex: 1,
     width: "100%",
     backgroundColor: "#FFF",
     height: "8.5%",
     padding: 10,
     borderRadius: 15
+  },
+  listContent: {
+    paddingTop: 20,
+  },
+  rowtop: {
+    justifyContent: 'space-between',
+    marginBottom: 28,
+  },
+  big: {
+    position: "absolute",
+    bottom: 0,
+
+
+  },
+  big1: {
+    position: "absolute",
+    bottom: 8,
+    left: 20,
+    zIndex: 1
+
+  },
+  big2: {
+    position: "absolute",
+    top: 8,
+    padding: 20,
+    zIndex: 1
+
+  },
+  big3: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+  },
+  big4: {
+    position: "absolute",
+    top: 0,
+    right: 0,
   },
 })

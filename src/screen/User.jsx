@@ -377,7 +377,7 @@ console.log("theCart",theCart); // Output: ["pen", "marker", "highlighter", "sha
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
             <View style={{ flexDirection: "row", gap: 20, alignItems: "center" }}>
               <View style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: "#fff", alignItems: "center", justifyContent: "center" }}>
@@ -579,7 +579,7 @@ console.log("theCart",theCart); // Output: ["pen", "marker", "highlighter", "sha
             keyExtractor={(item) => item.id}
             scrollEnabled={false}
             numColumns={2}
-            columnWrapperStyle={styles.row}
+            columnWrapperStyle={styles.rowtop}
             contentContainerStyle={styles.listContent}
 
           />
@@ -780,7 +780,7 @@ const styles = StyleSheet.create({
   listContent: {
     paddingTop: 20,
   },
-  row: {
+  rowtop: {
 
     justifyContent: 'space-between',
     marginBottom: 28,
